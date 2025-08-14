@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>authentik-server</Name>
+  <Repository>ghcr.io/goauthentik/server:2025.6.4</Repository>
+  <Registry>https://github.com/goauthentik/authentik</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>https://github.com/goauthentik/authentik/issues</Support>
+  <Project/>https://goauthentik.io</Project>
+  <Overview>Authentik is an open-source Identity Provider (IdP) focused on flexibility, security, and ease of integration.&#xD;
+The server container runs the core web application and API, handling authentication flows, admin dashboard, and user portal. It connects to the worker container for background jobs and tasks.</Overview>
+  <Category>Network:Management Security: Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:9000]</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/goauthentik/authentik/main/website/static/img/icon.png</Icon>
+  <PostArgs>server</PostArgs>
+  <Requires>The server runs alongside the worker and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
+&#xD;
+It is recommended to assign the 4 containers (or 5 if you choose option 2 in the worker) to the same custom network.&#xD;
+&#xD;
+To start the initial setup, navigate to http://IP:9000/if/flow/initial-setup/ or https://FQDN/if/flow/initial-setup/ (Recommended to laucnh through FQDN the first time to avoid adding it manually)</Requires>
+  <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
+  <Config Name="Redis Password" Target="AUTHENTIK_REDIS__PASSWORD" Default="" Mode="" Description="Password of Redis server." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="PostgreSQL Host" Target="AUTHENTIK_POSTGRESQL__HOST" Default="postgresql16" Mode="" Description="Host/IP of the PostgreSQL database." Type="Variable" Display="always" Required="true" Mask="false">postgresql</Config>
+  <Config Name="PostgreSQL User" Target="AUTHENTIK_POSTGRESQL__USER" Default="postgres" Mode="" Description="Username for PostgreSQL access." Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
+  <Config Name="PostgreSQL Database Name" Target="AUTHENTIK_POSTGRESQL__NAME" Default="authentik" Mode="" Description="Name of the PostgreSQL database." Type="Variable" Display="always" Required="true" Mask="false">authentik</Config>
+  <Config Name="PostgreSQL Password" Target="AUTHENTIK_POSTGRESQL__PASSWORD" Default="" Mode="" Description="Password for the PostgreSQL user." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Media Volume" Target="/media" Default="/mnt/user/appdata/authentik/media" Mode="rw" Description="Stores uploaded media and assets." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/authentik/media</Config>
+  <Config Name="Custom Templates Volume" Target="/templates" Default="/mnt/user/appdata/authentik/templates" Mode="rw" Description="Stores custom Authentik templates." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/authentik/templates</Config>
+  <Config Name="HTTP Port" Target="9000" Default="9000" Mode="tcp" Description="Web UI and API (HTTP) access port." Type="Port" Display="always" Required="true" Mask="false">9000</Config>
+  <Config Name="HTTPS Port" Target="9443" Default="9443" Mode="tcp" Description="Secure Web UI and API (HTTPS) access port." Type="Port" Display="always" Required="true" Mask="false">9443</Config>
+  <Config Name="Enable Error Reporting" Target="AUTHENTIK_ERROR_REPORTING__ENABLED" Default="true" Mode="" Description="Enable/disable sending error reports (true/false)." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Email Host" Target="AUTHENTIK_EMAIL__HOST" Default="smtp.gmail.com" Mode="" Description="SMTP server hostname." Type="Variable" Display="always" Required="false" Mask="false">smtp.gmail.com</Config>
+  <Config Name="Email Port" Target="AUTHENTIK_EMAIL__PORT" Default="587" Mode="" Description="SMTP server port." Type="Variable" Display="always" Required="false" Mask="false">587</Config>
+  <Config Name="Email Username" Target="AUTHENTIK_EMAIL__USERNAME" Default="example@localhost" Mode="" Description="SMTP account username." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Email Password" Target="AUTHENTIK_EMAIL__PASSWORD" Default="" Mode="" Description="For Gmail, visit&#13;&#10;https://myaccount.google.com/apppasswords" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Email Use TLS" Target="AUTHENTIK_EMAIL__USE_TLS" Default="true" Mode="" Description="Enable TLS for SMTP (true/false)." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Email Use SSL" Target="AUTHENTIK_EMAIL__USE_SSL" Default="false" Mode="" Description="Enable SSL for SMTP (true/false)." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="Email Timeout" Target="AUTHENTIK_EMAIL__TIMEOUT" Default="10" Mode="" Description="SMTP timeout in seconds." Type="Variable" Display="always" Required="false" Mask="false">10</Config>
+  <Config Name="Email From Address" Target="AUTHENTIK_EMAIL__FROM" Default="authintik@localhost" Mode="" Description="Default &#x201C;From&#x201D; email address." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <TailscaleStateDir/>
+</Container>

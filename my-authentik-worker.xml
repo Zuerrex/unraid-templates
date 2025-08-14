@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>authentik-worker</Name>
+  <Repository>ghcr.io/goauthentik/server:2025.6.4</Repository>
+  <Registry>https://github.com/goauthentik/authentik</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>https://github.com/goauthentik/authentik/issues</Support>
+  <Project/>https://goauthentik.io</Project>
+  <Overview>The Authentik worker container processes background jobs, scheduled tasks, and asynchronous operations for the server. It handles actions such as sending emails, running LDAP/SCIM syncs, processing login events, and managing provisioning.</Overview>
+  <Category>Network:Management Security: Tools:Utilities</Category>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/goauthentik/authentik/main/website/static/img/icon.png</Icon>
+  <ExtraParams>--user root</ExtraParams>
+  <PostArgs>worker</PostArgs>
+  <Requires>Worker basics&#xD;
+The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
+&#xD;
+It is recommended to assign the 4 containers (or 5 if you choose option 2 below) to the same custom network.&#xD;
+&#xD;
+Running as non-root&#xD;
+If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths.&#xD;
+&#xD;
+Docker socket options (choose ONE):&#xD;
+1- Direct socket (easiest, least safe):&#xD;
+Map /var/run/docker.sock and set the socket path in the template. This gives Authentik broad Docker control - use only in trusted environments.&#xD;
+2- Socket-proxy (recommended):&#xD;
+Point Authentik&#x2019;s Outpost Integration to your proxy and enable only the endpoints needed for outpost lifecycle:&#xD;
+IMAGES=1 (pull images)&#xD;
+CONTAINERS=1 (read/create/kill/remove containers)&#xD;
+POST=1 (allow POST requests required for create/kill/remove)&#xD;
+INFO=1 (system info)&#xD;
+VERSION=1 (Docker API version)&#xD;
+(Names vary slightly by proxy image; use the equivalents if different)&#xD;
+Example for Outpost Integration&#xD;
+Type: Docker Service-Connection&#xD;
+URL: http://socket-proxy:2375&#xD;
+Local: toggled off&#xD;
+3- No socket:&#xD;
+Don&#x2019;t expose Docker at all. Manage outposts manually from Authentik (create/update/remove them yourself).</Requires>
+  <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
+  <Config Name="Redis Password" Target="AUTHENTIK_REDIS__PASSWORD" Default="" Mode="" Description="Password of Redis server." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="PostgreSQL Host" Target="AUTHENTIK_POSTGRESQL__HOST" Default="postgresql16" Mode="" Description="Host/IP of the PostgreSQL database." Type="Variable" Display="always" Required="true" Mask="false">postgresql</Config>
+  <Config Name="PostgreSQL User" Target="AUTHENTIK_POSTGRESQL__USER" Default="postgres" Mode="" Description="Username for PostgreSQL access." Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
+  <Config Name="PostgreSQL Database Name" Target="AUTHENTIK_POSTGRESQL__NAME" Default="authentik" Mode="" Description="Name of the PostgreSQL database." Type="Variable" Display="always" Required="true" Mask="false">authentik</Config>
+  <Config Name="PostgreSQL Password" Target="AUTHENTIK_POSTGRESQL__PASSWORD" Default="" Mode="" Description="Password for the PostgreSQL user." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Docker Socket Volume" Target="/var/run/docker.sock" Default="" Mode="rw" Description="Mounts Docker socket for container management." Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="Media Volume" Target="/media" Default="/mnt/user/appdata/authentik/media" Mode="rw" Description="Stores uploaded media and assets." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/authentik/media</Config>
+  <Config Name="Certificates Volume" Target="/certs" Default="/mnt/user/appdata/authentik/certs" Mode="rw" Description="Stores SSL/TLS certificates." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/authentik/certs</Config>
+  <Config Name="Custom Templates Volume" Target="/templates" Default="/mnt/user/appdata/authentik/templates" Mode="rw" Description="Stores custom Authentik templates." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/authentik/templates</Config>
+  <Config Name="Enable Error Reporting" Target="AUTHENTIK_ERROR_REPORTING__ENABLED" Default="true" Mode="" Description="Enable/disable sending error reports (true/false)." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Email Host" Target="AUTHENTIK_EMAIL__HOST" Default="smtp.gmail.com" Mode="" Description="SMTP server hostname." Type="Variable" Display="always" Required="false" Mask="false">smtp.gmail.com</Config>
+  <Config Name="Email Port" Target="AUTHENTIK_EMAIL__PORT" Default="587" Mode="" Description="SMTP server port." Type="Variable" Display="always" Required="false" Mask="false">587</Config>
+  <Config Name="Email Username" Target="AUTHENTIK_EMAIL__USERNAME" Default="example@localhost" Mode="" Description="SMTP account username." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Email Password" Target="AUTHENTIK_EMAIL__PASSWORD" Default="" Mode="" Description="For Gmail, visit&#13;&#10;https://myaccount.google.com/apppasswords" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Email Use TLS" Target="AUTHENTIK_EMAIL__USE_TLS" Default="true" Mode="" Description="Enable TLS for SMTP (true/false)." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Email Use SSL" Target="AUTHENTIK_EMAIL__USE_SSL" Default="false" Mode="" Description="Enable SSL for SMTP (true/false)." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="Email Timeout" Target="AUTHENTIK_EMAIL__TIMEOUT" Default="10" Mode="" Description="SMTP timeout in seconds." Type="Variable" Display="always" Required="false" Mask="false">10</Config>
+  <Config Name="Email From Address" Target="AUTHENTIK_EMAIL__FROM" Default="authintik@localhost" Mode="" Description="Default &#x201C;From&#x201D; email address." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <TailscaleStateDir/>
+</Container>
