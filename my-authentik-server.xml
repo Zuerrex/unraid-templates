@@ -13,7 +13,7 @@ The server container runs the core web application and API, handling authenticat
   <Category>Network:Management Security: Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:9000]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/Zuerrex/unraid-templates/refs/heads/main/my-authentik-server.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/goauthentik/authentik/main/website/static/img/icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <PostArgs>server</PostArgs>
   <Requires>The server runs alongside the worker and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
 &#xD;
