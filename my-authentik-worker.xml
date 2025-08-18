@@ -25,7 +25,7 @@ If you remove --user root from Extra Parameters, you must ensure file/share perm
 Docker socket options (choose ONE):&#xD;
 1- Direct socket (easiest, least safe):&#xD;
 Map /var/run/docker.sock and set the socket path in the template. This gives Authentik broad Docker control - use only in trusted environments.&#xD;
-2- Socket-proxy (recommended):&#xD;
+2- Socket-proxy:&#xD;
 Point Authentik&#x2019;s Outpost Integration to your proxy and enable only the endpoints needed for outpost lifecycle:&#xD;
 IMAGES=1 (pull images)&#xD;
 CONTAINERS=1 (read/create/kill/remove containers)&#xD;
@@ -37,7 +37,7 @@ Example for Outpost Integration&#xD;
 Type: Docker Service-Connection&#xD;
 URL: http://socket-proxy:2375&#xD;
 Local: toggled off&#xD;
-3- No socket:&#xD;
+3- No socket (recommended):&#xD;
 Don&#x2019;t expose Docker at all. Manage outposts manually from Authentik (create/update/remove them yourself).</Requires>
   <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
