@@ -10,7 +10,7 @@
   <Project>https://goauthentik.io</Project>
   <Overview>The Authentik worker container processes background jobs, scheduled tasks, and asynchronous operations for the server. It handles actions such as sending emails, running LDAP/SCIM syncs, processing login events, and managing provisioning.</Overview>
   <Category>Network:Management Security: Tools:Utilities</Category>
-  <TemplateURL>https://raw.githubusercontent.com/Zuerrex/unraid-templates/refs/heads/main/my-authentik-worker.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-authentik-worker.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <ExtraParams>--user root</ExtraParams>
   <PostArgs>worker</PostArgs>
