@@ -14,10 +14,7 @@
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <ExtraParams>--user root</ExtraParams>
   <PostArgs>worker</PostArgs>
-  <Requires>Worker basics&#xD;
-The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
-&#xD;
-It is recommended to assign the 4 containers (or 5 if you choose option 2 below) to the same custom network.&#xD;
+  <Requires>The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
 &#xD;
 Running as non-root&#xD;
 If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths.&#xD;
