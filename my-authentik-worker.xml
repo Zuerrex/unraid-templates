@@ -31,7 +31,7 @@ Type: Docker Service-Connection, URL: http://socket-proxy:2375, Local: toggled o
 &#xA;
 3- <b>No socket (recommended):</b>&#xA;
 Don’t expose Docker Socket at all. Manage outposts manually from Authentik (create/update/remove them yourself).
-</Requires>
+  </Requires>
   <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
   <Config Name="Redis Password" Target="AUTHENTIK_REDIS__PASSWORD" Default="" Mode="" Description="Password of Redis server." Type="Variable" Display="always" Required="false" Mask="true"/>
