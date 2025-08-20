@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>authentik-ldap</Name>
+  <Repository>ghcr.io/goauthentik/ldap:2025.6.4</Repository>
+  <Registry>https://github.com/goauthentik/authentik</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>https://github.com/goauthentik/authentik/issues</Support>
+  <Project/>https://goauthentik.io</Project>
+  <Overview>Provides an LDAP interface for applications that require LDAP authentication, exposing Authentik users and groups to legacy systems.</Overview>
+  <Category/>Network:Management Security: Tools:Utilities</Category>
+  <TemplateURL/>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-authentik-ldap.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
+  <Requires>Requires a running Authentik setup (authentik-server and authentik-worker). This outpost cannot function as a standalone container.</Requires>
+  <Config Name="Authentik Host" Target="AUTHENTIK_HOST" Default="" Mode="" Description="Authentik server URL (from outpost deployment info)" Type="Variable" Display="always" Required="false" Mask="false">https://example.domain.com</Config>
+  <Config Name="Authentik Token" Target="AUTHENTIK_TOKEN" Default="" Mode="" Description="Authentik API token (from outpost deployment info)" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Authentik Insecure" Target="AUTHENTIK_INSECURE" Default="" Mode="" Description="Allow insecure SSL (from outpost deployment info)" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="HTTP Port" Target="3389" Default="389" Mode="tcp" Description="Outpost HTTP port" Type="Port" Display="always" Required="false" Mask="false">389</Config>
+  <Config Name="HTTPS Port" Target="6636" Default="636" Mode="tcp" Description="Outpost HTTPS port" Type="Port" Display="always" Required="false" Mask="false">636</Config>
+</Container>
