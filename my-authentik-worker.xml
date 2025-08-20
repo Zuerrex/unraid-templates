@@ -14,8 +14,7 @@
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <ExtraParams>--user root</ExtraParams>
   <PostArgs>worker</PostArgs>
-  <Requires>
-The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xA;
+  <Requires>The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xA;
 &#xA;
 <b>Running as non-root</b>&#xA;
 If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths.&#xA;
@@ -30,8 +29,7 @@ IMAGES=1, CONTAINERS=1, POST=1, INFO=1, VERSION=1&#xA;
 Type: Docker Service-Connection, URL: http://socket-proxy:2375, Local: toggled off&#xA;
 &#xA;
 3- <b>No socket (recommended):</b>&#xA;
-Don’t expose Docker Socket at all. Manage outposts manually from Authentik (create/update/remove them yourself).
-  </Requires>
+Don’t expose Docker Socket at all. Manage outposts manually from Authentik (create/update/remove them yourself).</Requires>
   <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
   <Config Name="Redis Password" Target="AUTHENTIK_REDIS__PASSWORD" Default="" Mode="" Description="Password of Redis server." Type="Variable" Display="always" Required="false" Mask="true"/>
