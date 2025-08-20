@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>authentik-worker</Name>
-  <Repository>ghcr.io/goauthentik/server:2025.6.4</Repository>
+  <Repository>ghcr.io/goauthentik/server:2025.8</Repository>
   <Registry>https://github.com/goauthentik/authentik</Registry>
   <Network>bridge</Network>
   <Shell>sh</Shell>
