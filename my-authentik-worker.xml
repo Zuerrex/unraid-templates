@@ -14,7 +14,20 @@
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <ExtraParams>--user root</ExtraParams>
   <PostArgs>worker</PostArgs>
-  <Requires>The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first. If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths. For socket-proxy, use IMAGES=1, CONTAINERS=1, POST=1, INFO=1, VERSION=1 Type: Docker Service-Connection, URL: http://socket-proxy:2375, Local: toggled off</Requires>
+  <Requires>The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
+&#xD;
+Running as non-root&#xD;
+If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths.&#xD;
+&#xD;
+Docker socket options (choose ONE):&#xD;
+1- Direct socket (easiest, least safe):&#xD;
+Map /var/run/docker.sock and set the socket path in the template. This gives Authentik broad Docker control - use only in trusted environments.&#xD;
+2- Socket-proxy:&#xD;
+Point Authentik&#x2019;s Outpost Integration to your proxy and enable only the endpoints needed for outpost lifecycle:&#xD;
+IMAGES=1, CONTAINERS=1, POST=1, INFO=1, VERSION=1&#xD;
+Type: Docker Service-Connection, URL: http://socket-proxy:2375, Local: toggled off&#xD;
+3- No socket (recommended):&#xD;
+Don&#x2019;t expose Docker Socket at all. Manage outposts manually from Authentik (create/update/remove them yourself).</Requires>
   <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
   <Config Name="Redis Password" Target="AUTHENTIK_REDIS__PASSWORD" Default="" Mode="" Description="Password of Redis server." Type="Variable" Display="always" Required="false" Mask="true"/>
