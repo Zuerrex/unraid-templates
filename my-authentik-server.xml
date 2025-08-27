@@ -35,5 +35,4 @@
   <Config Name="Email Use SSL" Target="AUTHENTIK_EMAIL__USE_SSL" Default="false" Mode="" Description="Enable SSL for SMTP (true/false)." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
   <Config Name="Email Timeout" Target="AUTHENTIK_EMAIL__TIMEOUT" Default="10" Mode="" Description="SMTP timeout in seconds." Type="Variable" Display="always" Required="false" Mask="false">10</Config>
   <Config Name="Email From Address" Target="AUTHENTIK_EMAIL__FROM" Default="authintik@localhost" Mode="" Description="Default &#x201C;From&#x201D; email address." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <TailscaleStateDir/>
 </Container>

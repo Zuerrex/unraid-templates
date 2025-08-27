@@ -14,10 +14,7 @@
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <ExtraParams>--user root</ExtraParams>
   <PostArgs>worker</PostArgs>
-  <Requires>The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
-&#xD;
-Running as non-root&#xD;
-If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths.&#xD;
+  <Requires>The worker runs alongside the server and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first. If you remove --user root from Extra Parameters, you must ensure file/share permissions are handled manually so the worker can read/write any mapped paths.&#xD;
 &#xD;
 Docker socket options (choose ONE):&#xD;
 1- Direct socket (easiest, least safe):&#xD;
@@ -48,5 +45,4 @@ Don&#x2019;t expose Docker Socket at all. Manage outposts manually from Authenti
   <Config Name="Email Use SSL" Target="AUTHENTIK_EMAIL__USE_SSL" Default="false" Mode="" Description="Enable SSL for SMTP (true/false)." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
   <Config Name="Email Timeout" Target="AUTHENTIK_EMAIL__TIMEOUT" Default="10" Mode="" Description="SMTP timeout in seconds." Type="Variable" Display="always" Required="false" Mask="false">10</Config>
   <Config Name="Email From Address" Target="AUTHENTIK_EMAIL__FROM" Default="authintik@localhost" Mode="" Description="Default &#x201C;From&#x201D; email address." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <TailscaleStateDir/>
 </Container>
