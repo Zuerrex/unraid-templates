@@ -6,11 +6,11 @@
   <Network>bridge</Network>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>https://github.com/goauthentik/authentik/issues</Support>
-  <Project/>https://goauthentik.io</Project>
+  <Support>https://github.com/goauthentik/authentik/issues</Support>
+  <Project>https://goauthentik.io</Project>
   <Overview>Provides an LDAP interface for applications that require LDAP authentication, exposing Authentik users and groups to legacy systems.</Overview>
-  <Category/>Network:Management Security: Tools:Utilities</Category>
-  <TemplateURL/>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-authentik-ldap.xml</TemplateURL>
+  <Category>Network:Management Security: Tools:Utilities</Category>
+  <TemplateURL>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-authentik-ldap.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <Requires>Requires a running Authentik setup (authentik-server and authentik-worker). This outpost cannot function as a standalone container.</Requires>
   <Config Name="Authentik Host" Target="AUTHENTIK_HOST" Default="" Mode="" Description="Authentik server URL (from outpost deployment info)" Type="Variable" Display="always" Required="false" Mask="false">https://example.domain.com</Config>
