@@ -6,12 +6,12 @@
   <Network>bridge</Network>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>https://github.com/CorentinTh/it-tools/issues</Support>
-  <Project/>https://it-tools.tech</Project>
+  <Support>https://github.com/CorentinTh/it-tools/issues</Support>
+  <Project>https://it-tools.tech</Project>
   <Overview>Useful tools for developers and people working in IT.</Overview>
-  <Category/>Tools:Utilities</Category>
+  <Category>Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:80]</WebUI>
-  <TemplateURL/>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-it-tools.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-it-tools.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/zuerrex/icons/main/it-tools.png</Icon>
   <Config Name="WebUI" Target="80" Default="80" Mode="tcp" Description="HTTP port for the WebUI" Type="Port" Display="always" Required="false" Mask="false">8085</Config>
   <TailscaleStateDir/>
