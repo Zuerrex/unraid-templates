@@ -15,9 +15,7 @@ The server container runs the core web application and API, handling authenticat
   <TemplateURL>https://raw.githubusercontent.com/zuerrex/unraid-templates/refs/heads/main/my-authentik-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Zuerrex/icons/main/authentik.png</Icon>
   <PostArgs>server</PostArgs>
-  <Requires>The server runs alongside the worker and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first.&#xD;
-&#xD;
-To start the initial setup, navigate to http://IP:9000/if/flow/initial-setup/ or https://FQDN/if/flow/initial-setup/ (Recommended to laucnh through FQDN the first time to avoid adding it manually)</Requires>
+  <Requires>The server runs alongside the worker and connects to the same PostgreSQL (16 and above) and Redis instances. It depends on PostgreSQL and Redis, install them first. To start the initial setup, navigate to http://IP:9000/if/flow/initial-setup/ or https://FQDN/if/flow/initial-setup/</Requires>
   <Config Name="Secret Key" Target="AUTHENTIK_SECRET_KEY" Default="" Mode="" Description="Cryptographic key for Authentik." Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="Redis Host" Target="AUTHENTIK_REDIS__HOST" Default="redis" Mode="" Description="Host/IP of the Redis server." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
   <Config Name="Redis Password" Target="AUTHENTIK_REDIS__PASSWORD" Default="" Mode="" Description="Password of Redis server." Type="Variable" Display="always" Required="false" Mask="true"/>
